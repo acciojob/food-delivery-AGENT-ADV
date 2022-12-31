@@ -25,7 +25,8 @@ public class UserController {
 	UserServiceImpl userService;
 
 	@GetMapping(path = "/{id}")
-	public UserResponse getUser(@PathVariable String id) throws Exception{
+	public UserResponse getUser(@PathVariable String id) throws Exception
+	{
 		UserDto userDto = userService.getUserByUserId(id);
 		if(userDto==null)
 			throw new Exception("User not find");
@@ -40,7 +41,8 @@ public class UserController {
 	}
 
 	@PostMapping()
-	public UserResponse createUser(@RequestBody UserDetailsRequestModel userDetails) throws Exception{
+	public UserResponse createUser(@RequestBody UserDetailsRequestModel userDetails) throws Exception
+	{
 		UserDto userDto = UserDto.builder()
 				.firstName(userDetails.getFirstName())
 				.lastName(userDetails.getLastName())
@@ -63,7 +65,8 @@ public class UserController {
 	}
 
 	@PutMapping(path = "/{id}")
-	public UserResponse updateUser(@PathVariable String id, @RequestBody UserDetailsRequestModel userDetails) throws Exception{
+	public UserResponse updateUser(@PathVariable String id, @RequestBody UserDetailsRequestModel userDetails) throws Exception
+	{
 		UserDto userDto = UserDto.builder()
 				.userId(id)
 				.firstName(userDetails.getFirstName())
@@ -85,7 +88,8 @@ public class UserController {
 	}
 
 	@DeleteMapping(path = "/{id}")
-	public OperationStatusModel deleteUser(@PathVariable String id) throws Exception{
+	public OperationStatusModel deleteUser(@PathVariable String id) throws Exception
+	{
 		try{
 			userService.deleteUser(id);
 		}
@@ -96,7 +100,8 @@ public class UserController {
 	}
 
 	@GetMapping()
-	public List<UserResponse> getUsers(){
+	public List<UserResponse> getUsers()
+	{
 
 		List<UserDto> userDtoList = userService.getUsers();
 		List<UserResponse> userResponseList = new ArrayList<>();

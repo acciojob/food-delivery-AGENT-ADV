@@ -78,7 +78,7 @@ public class OrderServiceImpl implements OrderService {
     {
         OrderEntity orderEntity = orderRepository.findByOrderId(orderId);
         if(orderEntity==null)
-            throw new Exception("No Order with given order Id exists");
+            throw new Exception("Order doesn't exist");
 
         orderRepository.deleteById(orderEntity.getId());
     }

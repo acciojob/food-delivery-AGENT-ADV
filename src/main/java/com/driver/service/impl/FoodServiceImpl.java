@@ -5,7 +5,7 @@ import com.driver.io.repository.FoodRepository;
 import com.driver.service.FoodService;
 import com.driver.shared.dto.FoodDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -34,10 +34,11 @@ public class FoodServiceImpl implements FoodService {
     }
 
     @Override
-    public FoodDto getFoodById(String foodId) throws Exception {
+    public FoodDto getFoodById(String foodId) throws Exception
+    {
         FoodEntity foodEntity = foodRepository.findByFoodId(foodId);
         if(foodEntity==null)
-            throw new Exception("No food is found with the given foodId");
+            throw new Exception("no such food present");
 
             FoodDto foodDto =
                     FoodDto.builder()
@@ -55,7 +56,7 @@ public class FoodServiceImpl implements FoodService {
     public FoodDto updateFoodDetails(String foodId, FoodDto foodDetails) throws Exception
     {
         if(foodRepository.findByFoodId(foodId)==null)
-            throw new Exception("no such food exists with that food_id");
+            throw new Exception("no such food present");
 
 
             FoodEntity foodEntity =

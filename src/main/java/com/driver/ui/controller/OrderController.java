@@ -28,7 +28,8 @@ public class OrderController {
 	@Autowired
 	OrderServiceImpl orderService;
 	@GetMapping(path="/{id}")
-	public OrderDetailsResponse getOrder(@PathVariable String id) throws Exception{
+	public OrderDetailsResponse getOrder(@PathVariable String id) throws Exception
+	{
 		OrderDto orderDto = orderService.getOrderById(id);
 		if(orderDto==null)
 			throw new Exception("Order doesn't exist");
@@ -46,7 +47,8 @@ public class OrderController {
 	}
 
 	@PostMapping()
-	public OrderDetailsResponse createOrder(@RequestBody OrderDetailsRequestModel order) {
+	public OrderDetailsResponse createOrder(@RequestBody OrderDetailsRequestModel order)
+	{
 		OrderDto orderDto = OrderDto.builder()
 				.items(order.getItems())
 				.cost(order.getCost())
@@ -64,7 +66,8 @@ public class OrderController {
 	}
 
 	@PutMapping(path="/{id}")
-	public OrderDetailsResponse updateOrder(@PathVariable String id, @RequestBody OrderDetailsRequestModel order) throws Exception{
+	public OrderDetailsResponse updateOrder(@PathVariable String id, @RequestBody OrderDetailsRequestModel order) throws Exception
+	{
 		OrderDto orderDto = OrderDto.builder()
 				.userId(order.getUserId())
 				.items(order.getItems())
@@ -86,7 +89,8 @@ public class OrderController {
 	}
 
 	@DeleteMapping(path = "/{id}")
-	public OperationStatusModel deleteOrder(@PathVariable String id) throws Exception {
+	public OperationStatusModel deleteOrder(@PathVariable String id) throws Exception
+	{
 		try{
 			orderService.deleteOrder(id);
 		}

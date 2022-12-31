@@ -19,8 +19,8 @@ public class UserServiceImpl implements UserService {
     public UserDto createUser(UserDto user) throws Exception
     {
         UserEntity userEntity =  userRepository.findById(user.getId()).get();
-        if(userEntity!=null)
-            throw new Exception("User Already Exists !!");
+        if(userEntity==null)
+            throw new Exception("User already exists");
 
         userEntity =
                 UserEntity.builder()
